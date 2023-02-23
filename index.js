@@ -23,6 +23,19 @@ app.post('/api/location', (req, res) => {
   });
 });
 
+app.post('/api/clear', (req, res) => {
+  // const { latitude, longitude } = req.body;
+  
+  // Add the new location data to the locations array
+  locations.length = 0;
+
+  res.status(200).json({
+    message: "Location data cleared successfully!"
+  });
+});
+
+
+
 // API to retrieve all the stored location data
 app.get('/api/location', (req, res) => {
   res.status(200).json(locations);
