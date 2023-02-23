@@ -23,7 +23,7 @@ app.post('/api/location', (req, res) => {
   });
 });
 
-app.post('/api/clear', (req, res) => {
+app.get('/api/clear', (req, res) => {
   // const { latitude, longitude } = req.body;
   
   // Add the new location data to the locations array
