@@ -1,0 +1,38 @@
+
+
+// Middlewares
+app.use(cors());
+app.use(bodyParser.json());
+
+// Store the live location data
+const locations = [];
+
+// API to store live latitude and longitude
+app.post('/api/location', (req, res) => {
+  const { latitude, longitude } = req.body;
+  
+  // Add the new location data to the locations array
+  locations.push({ latitude, longitude });
+
+  res.status(200).json({
+    message: "Location data received successfully!"
+  });
+});
+
+app.get('/api/clear', (req, res) => {
+  // const { latitude, longitude } = req.body;
+  
+  // Add the new location data to the locations array
+  locations.length = 0;
+
+  res.status(200).json({
+    message: "Location data cleared successfully!"
+  });
+});
+
+
+
+// API to retrieve all the stored location data
+app.get('/api/location', (req, res) => {
+  res.status(200).json(locations);
+});
